@@ -1,5 +1,7 @@
 class Player
 
+  attr_accessor :hp, :name 
+
  def initialize(name, role)
     @name=name
     @role=role
@@ -31,14 +33,6 @@ class Player
     #spec
  end
 
- def getHp
-    @hp
- end
-
- def getName
-    @name
- end
-
 end
 
 class Battle
@@ -56,10 +50,10 @@ class Battle
     else
      current_player = @p2
      @turn = 1
-    end
+  end
    
+    puts "#{current_player.name}, it's your turn!"
     current_player.sayHi
-    puts "#{current_player.getName}, it's your turn!"
     current_player.hit
    
  end
@@ -92,8 +86,8 @@ p1 = Player.new(name, role)
 p2 = Player.new('Enemy', 'vo')
 battle = Battle.new(p1, p2)
 battle.startGame
-while (p1.getHp > 0 || p2.getHp > 0)
+while (p1.hp > 0 || p2.hp > 0)
  battle.turn
- puts "You: #{p1.getHp}; Enemy: #{p2.getHp}"
+ puts "You: #{p1.hp}; Enemy: #{p2.hp}"
 end
 battle.endGame
